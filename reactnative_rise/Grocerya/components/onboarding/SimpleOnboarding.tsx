@@ -160,25 +160,25 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: width * 0.55,
+    width: width * 0.53,
     height: width * 0.5,
     marginBottom: 20,
     resizeMode: "contain",
   },
 
   title: {
-    fontFamily: "Poppins",
+    fontFamily: "Poppins_600SemiBold",
     color: "#0D0D0D",
     fontWeight: "600",
-    fontSize: 20,
+    fontSize: 19,
     textAlign: "center",
-    marginBottom: 10,
+    marginBottom: 8,
   },
 
   subtitle: {
-    fontFamily: "Poppins",
+    fontFamily: "Poppins_400Regular",
     color: "#777777",
-    fontSize: 16,
+    fontSize: 14,
     textAlign: "center",
     marginHorizontal: 38,
   },
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
   skipText: {
     color: "#0D0D0D",
     fontWeight: "500",
-    fontFamily: "Poppins",
+    fontFamily: "Poppins_500Medium",
     fontSize: 16,
   },
   nextBtn: {
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
   nextText: {
     color: "#FFFFFF",
     fontWeight: "500",
-    fontFamily: "Poppins",
+    fontFamily: "Poppins_500Medium",
     fontSize: 16,
   },
 });
