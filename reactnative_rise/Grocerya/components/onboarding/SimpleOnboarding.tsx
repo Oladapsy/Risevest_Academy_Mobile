@@ -74,8 +74,9 @@ const SimpleOnboarding = () => {
   });
 
   // get what length the slides are
-  console.log(slides.length);
-  console.log(currentIndex !== slides.length - 1);
+  // console.log(slides.length);
+  // console.log(currentIndex !== slides.length - 1);
+  // testing
 
   return (
     <View style={styles.container}>
@@ -155,11 +156,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 0,
+    marginBottom: 80,
   },
 
   image: {
-    width: width * 0.5,
-    height: width * 0.45,
+    width: width * 0.55,
+    height: width * 0.5,
     marginBottom: 20,
     resizeMode: "contain",
   },
@@ -178,6 +180,7 @@ const styles = StyleSheet.create({
     color: "#777777",
     fontSize: 16,
     textAlign: "center",
+    marginHorizontal: 38,
   },
 
   buttonConatiner: {

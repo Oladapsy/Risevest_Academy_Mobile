@@ -2,7 +2,7 @@ import { OnboardingScreen } from "@/components/onboarding/OnboardingScreen";
 import SimpleOnboarding from "@/components/onboarding/SimpleOnboarding";
 import SplashScreenView from "@/SplashScreenView";
 import { useEffect, useState } from "react";
-import { View, Text } from "react-native";
+
 
 const index = () => {
   const [showSplash, setShowSplash] = useState(true);
