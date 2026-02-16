@@ -1,17 +1,15 @@
 import React, { useRef, useState } from "react";
 import {
-  View,
-  Text,
-  StyleSheet,
   Dimensions,
   FlatList,
   Image,
+  StyleSheet,
+  Text,
   TouchableOpacity,
+  View,
 } from "react-native";
 
-import { useRouter } from "expo-router";
-
-const { width, height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 const slides = [
   {
@@ -44,35 +42,29 @@ const slides = [
   },
 ];
 
-export const OnboardingScreen = () => {
-  const flatListRef = useRef<FlatList>(null);
+const OnboardingScreen = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const router = useRouter();
+  const flatListRef = useRef<FlatList>(null);
 
   const handleNext = () => {
     if (currentIndex < slides.length - 1) {
-      flatListRef.current?.scrollToIndex({
-        index: currentIndex + 1,
-      });
-    } else {
-      console.log("Onboarding completed");
+      flatListRef.current?.scrollToIndex({ index: currentIndex + 1 });
     }
   };
 
   const handleSkip = () => {
-    flatListRef.current?.scrollToIndex({
-      index: slides.length - 1,
-    });
+    flatListRef.current?.scrollToIndex({ index: slides.length - 1 });
   };
 
   const renderItem = ({ item }: any) => (
     <View style={styles.slide}>
-      <Image source={item.image} style={styles.image} resizeMode="contain" />
+      <Image style={styles.image} source={item.image} />
       <Text style={styles.title}>{item.title}</Text>
       <Text style={styles.subtitle}>{item.subtitle}</Text>
     </View>
   );
 
+  // This function is used to track the current index of the slide
   const onViewRef = useRef(({ viewableItems }: any) => {
     setCurrentIndex(viewableItems[0].index);
   });
@@ -81,36 +73,39 @@ export const OnboardingScreen = () => {
     viewAreaCoveragePercentThreshold: 50,
   });
 
+  // get what length the slides are
+  // console.log(slides.length);
+  // console.log(currentIndex !== slides.length - 1);
+  // testing
+
   return (
     <View style={styles.container}>
-      {/* Top Progress Bars */}
+      {/* Top Slider - Progress bars */}
       <View style={styles.progressContainer}>
         {slides.map((_, index) => (
           <View
             key={index}
             style={[
               styles.progressBar,
-              currentIndex === index && styles.activeProgress,
+              index === currentIndex && styles.activeProgress,
             ]}
           />
         ))}
       </View>
 
-      {/* Slides */}
       <FlatList
         ref={flatListRef}
         data={slides}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
+        keyExtractor={(item) => item.id}
+        renderItem={renderItem}
         onViewableItemsChanged={onViewRef.current}
         viewabilityConfig={viewConfigRef.current}
       />
-
-      {/* Bottom Buttons */}
-      <View style={styles.buttonContainer}>
+      {/* The buttons at the bottom */}
+      <View style={styles.buttonConatiner}>
         {currentIndex !== slides.length - 1 ? (
           <>
             <TouchableOpacity style={styles.skipBtn} onPress={handleSkip}>
@@ -122,11 +117,8 @@ export const OnboardingScreen = () => {
             </TouchableOpacity>
           </>
         ) : (
-          <TouchableOpacity
-            style={[styles.nextBtn, { flex: 1 }]}
-            onPress={handleNext}
-          >
-            <Text style={styles.nextText}>Get Started</Text>
+          <TouchableOpacity style={styles.nextBtn} onPress={handleNext}>
+            <Text style={styles.nextText}>Getting Started</Text>
           </TouchableOpacity>
         )}
       </View>
@@ -137,25 +129,25 @@ export const OnboardingScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "white",
   },
 
   progressContainer: {
     flexDirection: "row",
-    marginTop: 60,
+    marginTop: 70,
     marginHorizontal: 20,
   },
 
   progressBar: {
     flex: 1,
-    height: 4,
-    backgroundColor: "#E0E0E0",
+    height: 3,
+    borderRadius: 100,
+    backgroundColor: "#F2F2F3",
     marginHorizontal: 4,
-    borderRadius: 4,
   },
 
   activeProgress: {
-    backgroundColor: "#000",
+    backgroundColor: "#0D0D0D",
   },
 
   slide: {
@@ -163,60 +155,71 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: 30,
+    paddingHorizontal: 0,
+    marginBottom: 80,
   },
 
   image: {
-    width: width * 0.8,
-    height: height * 0.4,
-    marginBottom: 40,
+    width: width * 0.53,
+    height: width * 0.5,
+    marginBottom: 20,
+    resizeMode: "contain",
   },
 
   title: {
-    fontSize: 22,
-    fontWeight: "bold",
+    fontFamily: "Poppins_600SemiBold",
+    color: "#0D0D0D",
+    fontWeight: "600",
+    fontSize: 19,
     textAlign: "center",
-    marginBottom: 12,
+    marginBottom: 8,
   },
 
   subtitle: {
+    fontFamily: "Poppins_400Regular",
+    color: "#777777",
     fontSize: 14,
     textAlign: "center",
-    color: "#777",
+    marginHorizontal: 38,
   },
 
-  buttonContainer: {
-    position: "absolute",
-    bottom: 50,
+  buttonConatiner: {
     width: "100%",
     flexDirection: "row",
+    position: "absolute",
+    bottom: 50,
     paddingHorizontal: 20,
   },
 
   skipBtn: {
     flex: 1,
-    backgroundColor: "#E5E5E5",
-    paddingVertical: 15,
-    borderRadius: 30,
+    backgroundColor: "#F2F2F3",
+    paddingVertical: 14,
+    borderRadius: 100,
     alignItems: "center",
-    marginRight: 10,
+    marginRight: 20,
   },
 
   skipText: {
-    color: "#000",
+    color: "#0D0D0D",
     fontWeight: "500",
+    fontFamily: "Poppins_500Medium",
+    fontSize: 16,
   },
-
   nextBtn: {
     flex: 1,
-    backgroundColor: "#000",
-    paddingVertical: 15,
-    borderRadius: 30,
+    backgroundColor: "#0D0D0D",
+    paddingVertical: 14,
+    borderRadius: 100,
     alignItems: "center",
   },
 
   nextText: {
-    color: "#fff",
-    fontWeight: "bold",
+    color: "#FFFFFF",
+    fontWeight: "500",
+    fontFamily: "Poppins_500Medium",
+    fontSize: 16,
   },
 });
+
+export default OnboardingScreen;
