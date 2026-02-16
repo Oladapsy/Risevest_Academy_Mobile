@@ -20,11 +20,20 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.anonymous.Grocerya"
     },
     "web": {
       "output": "static",
       "favicon": "./assets/images/favicon.png"
+    },
+    "splash": {
+      "image": "./assets/images/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0D0D0D",
+      "dark": {
+            "backgroundColor": "#0D0D0D"
+          }
     },
     "plugins": [
       "expo-router",
