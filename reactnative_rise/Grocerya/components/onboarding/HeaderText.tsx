@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     color: "#777777",
-    fontSize: 16,
+    fontSize: 15,
+    fontFamily: 'Poppins_500Medium',
   },
 });
 

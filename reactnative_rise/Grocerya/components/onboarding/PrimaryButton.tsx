@@ -1,16 +1,16 @@
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { TouchableOpacity, Text, StyleSheet, GestureResponderEvent } from "react-native";
 
 interface PrimaryButtonProp {
-  onpress: any;
-  text: "string";
+  onPress: (event: GestureResponderEvent) => void;
+  text: string;
 }
 
 const PrimaryButton = ({
-  onpress,
+  onPress,
   text,
 }: PrimaryButtonProp) => {
   return (
-    <TouchableOpacity style={styles.button} onPress={onpress}>
+    <TouchableOpacity style={styles.button} onPress={onPress}>
       <Text style={styles.text}>{text}</Text>
     </TouchableOpacity>
   );
@@ -19,7 +19,7 @@ const PrimaryButton = ({
 const styles = StyleSheet.create({
   button: {
     backgroundColor: "#0D0D0D", 
-    borderRadius: "100px",
+    borderRadius: 100,
     paddingVertical: 15,
     marginVertical: 10,
     alignItems: "center",

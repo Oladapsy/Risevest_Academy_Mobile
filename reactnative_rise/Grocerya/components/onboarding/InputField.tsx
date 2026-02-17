@@ -6,7 +6,7 @@ interface InputTextProp {
 }
 const InputField = ({ placeholder, keyboardType }: InputTextProp) => {
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput
         style={styles.input}
         placeholder={placeholder}
@@ -17,6 +17,11 @@ const InputField = ({ placeholder, keyboardType }: InputTextProp) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#F2F2F3',
+    flex: 1,
+    borderRadius: 8,
+  },
   input: {
     borderRadius: '8px',
     color: '#777777',
