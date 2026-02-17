@@ -1,5 +1,8 @@
-import OtpScreen from "../screens/OtpScreen";
+import { useLocalSearchParams } from 'expo-router';
+import OtpScreen from '../screens/OtpScreen';
 
 export default function Page() {
-  return <OtpScreen />;
+  const { phone } = useLocalSearchParams<{ phone: string }>();
+
+  return <OtpScreen phone={phone} />;
 }
