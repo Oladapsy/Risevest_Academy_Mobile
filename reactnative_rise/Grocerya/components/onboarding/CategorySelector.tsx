@@ -13,7 +13,7 @@ const CategorySelector = ({ categories, onselect }: CategorySelectorProps) => {
           style={styles.category}
           onPress={() => onselect(cat)}
         >
-          <Text>{cat}</Text>
+          <Text style={styles.text}>{cat}</Text>
         </TouchableOpacity>
       ))}
     </View>
@@ -21,8 +21,14 @@ const CategorySelector = ({ categories, onselect }: CategorySelectorProps) => {
 };
 
 const styles = StyleSheet.create({
-  category: {},
-  container: {},
+  category: { flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap'},
+  container: {
+    backgroundColor: "#F2F2F3",
+    borderRadius: "100px",
+    padding: 10,
+    margin: 5,
+  },
+  text: { fontSize: 16, color: "#0D0D0D" },
 });
 
 export default CategorySelector;
