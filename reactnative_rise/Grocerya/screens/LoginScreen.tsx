@@ -11,7 +11,7 @@ import {
 import { useState } from "react";
 import HeaderText from "@/components/onboarding/HeaderText";
 import PrimaryButton from "@/components/onboarding/PrimaryButton";
-import { COUNTRIES } from "@/assets/constants/countryData"; 
+import { COUNTRIES } from "@/assets/constants/countryData";
 
 type Country = (typeof COUNTRIES)[number];
 
@@ -37,23 +37,24 @@ const LoginScreen = () => {
       }}
     >
       <View style={styles.container}>
-        {/* ── Help icon ─────────────────────────────────────────────── */}
+        {/* ── Help icon ───*/}
         <TouchableOpacity style={styles.helpIcon} onPress={() => { }}>
           <View style={styles.helpCircle}>
             <Text style={styles.helpText}>?</Text>
           </View>
         </TouchableOpacity>
 
-        {/* ── Title ─────────────────────────────────────────────────── */}
+
+        {/* Header Text */}
         <HeaderText
           title="Get started"
           subtitle="You can log in or make an account if you're new"
         />
 
-        {/* ── Phone label ───────────────────────────────────────────── */}
+        {/* Phone label */}
         <Text style={styles.label}>Enter your phone number</Text>
 
-        {/* ── Phone row ─────────────────────────────────────────────── */}
+        {/* ── Phone row ───*/}
         <View style={styles.phoneRow}>
           {/* Country picker trigger */}
           <TouchableOpacity
@@ -122,6 +123,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     paddingHorizontal: 20,
     paddingTop: 80,
+    justifyContent: "flex-start",
   },
 
   // Help icon
@@ -142,7 +144,7 @@ const styles = StyleSheet.create({
   },
   helpText: {
     fontSize: 13,
-    color: "#0D0D0D",
+    color: "#777777",
     fontWeight: "500",
   },
 
