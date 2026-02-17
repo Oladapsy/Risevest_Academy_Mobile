@@ -2,6 +2,7 @@ import { View, Text, StyleSheet } from "react-native";
 import HeaderText from "@/components/onboarding/HeaderText";
 import InputField from "@/components/onboarding/InputField";
 import PrimaryButton from "@/components/onboarding/PrimaryButton";
+import {CountryPicker} from "react-native-country-codes-picker";
 
 const LoginScreen = () => {
   return (

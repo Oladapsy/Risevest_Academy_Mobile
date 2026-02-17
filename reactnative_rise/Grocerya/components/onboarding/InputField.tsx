@@ -1,16 +1,20 @@
-import { View, StyleSheet, TextInput, Text } from "react-native";
+import React from "react";
+import {
+  View,
+  StyleSheet,
+  TextInput,
+  TextInputProps,
+} from "react-native";
 
-interface InputTextProp {
-  placeholder: string;
-  keyboardType?: any;
-}
-const InputField = ({ placeholder, keyboardType }: InputTextProp) => {
+interface InputFieldProps extends TextInputProps {}
+
+const InputField = ({ style, ...rest }: InputFieldProps) => {
   return (
     <View style={styles.container}>
       <TextInput
-        style={styles.input}
-        placeholder={placeholder}
-        keyboardType={keyboardType || "default"}
+        style={[styles.input, style]}
+        placeholderTextColor="#999"
+        {...rest}
       />
     </View>
   );
@@ -18,16 +22,15 @@ const InputField = ({ placeholder, keyboardType }: InputTextProp) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#F2F2F3',
-    flex: 1,
-    borderRadius: 8,
+    backgroundColor: "#F2F2F3",
+    borderRadius: 16,
+    paddingHorizontal: 12,
   },
   input: {
-    borderRadius: '8px',
-    color: '#777777',
+    color: "#777777",
     fontSize: 14,
-    padding: 5,
-    marginVertical: 10,
+    paddingVertical: 14,
   },
 });
+
 export default InputField;
