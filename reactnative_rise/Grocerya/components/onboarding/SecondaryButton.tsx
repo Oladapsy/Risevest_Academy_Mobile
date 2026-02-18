@@ -2,7 +2,7 @@ import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
 interface SecondaryButtonProp {
   onpress: any;
-  text: "string";
+  text: string;
 }
 
 const SecondaryButton = ({
@@ -19,7 +19,7 @@ const SecondaryButton = ({
 const styles = StyleSheet.create({
   button: {
     backgroundColor: "#F2F2F3", 
-    borderRadius: "100px",
+    borderRadius: 100,
     paddingVertical: 15,
     marginVertical: 10,
     alignItems: "center",

@@ -16,13 +16,14 @@ const HeaderText = ({ title, subtitle }: HeaderTextProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 10,
+    marginBottom: 5,
   },
   title: {
     color: "#0D0D0D",
     fontFamily: "Poppins_600SemiBold",
     fontWeight: "semibold",
     fontSize: 20,
+    marginBottom: 10,
   },
   subtitle: {
     color: "#777777",

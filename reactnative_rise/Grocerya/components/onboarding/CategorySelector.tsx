@@ -21,14 +21,25 @@ const CategorySelector = ({ categories, onselect }: CategorySelectorProps) => {
 };
 
 const styles = StyleSheet.create({
-  category: { flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap'},
   container: {
-    backgroundColor: "#F2F2F3",
-    borderRadius: "100px",
-    padding: 10,
-    margin: 5,
+    backgroundColor: "#FFFFFF",
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    flexWrap: "wrap",
+    gap: 10,
+    marginTop: 13,
   },
-  text: { fontSize: 16, color: "#0D0D0D" },
+  text: {
+    fontSize: 16,
+    color: "#0D0D0D",
+    backgroundColor: "#F2F2F3",
+    paddingHorizontal: 13,
+    paddingVertical: 5,
+    borderRadius: 100,
+    fontFamily: "Poppins_500Medium"
+  },
+  category: {
+  },
 });
 
 export default CategorySelector;

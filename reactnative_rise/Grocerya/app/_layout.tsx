@@ -1,5 +1,7 @@
 import { useFonts, Poppins_400Regular, Poppins_600SemiBold, Poppins_500Medium } from '@expo-google-fonts/poppins';
 import { Stack } from 'expo-router';
+import { StatusBar } from "expo-status-bar";
+
 
 
 export default function RootLayout() {
@@ -13,6 +15,9 @@ export default function RootLayout() {
 
 
   return (
-      <Stack screenOptions={{ headerShown: false }}/>  
+    <>
+      <StatusBar backgroundColor="red" style="dark" />
+      <Stack screenOptions={{ headerShown: false }} />
+    </>
   );
 }

@@ -17,6 +17,7 @@ const InputField = ({ placeholder, keyboardType, value, onChangeText, onFocus }:
         placeholderTextColor="#A0A0A8"
         keyboardType={keyboardType || "default"}
         value={value}
+        maxLength={14}
         onChangeText={onChangeText}
         onFocus={onFocus}
       />

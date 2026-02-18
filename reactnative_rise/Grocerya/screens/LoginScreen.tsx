@@ -13,9 +13,11 @@ import { useState } from "react";
 import HeaderText from "@/components/onboarding/HeaderText";
 import PrimaryButton from "@/components/onboarding/PrimaryButton";
 import { COUNTRIES } from "@/assets/constants/countryData";
-import QuestionMark from "@/assets/svg/question.svg";
 import InputField from "@/components/onboarding/InputField";
 import { useRouter } from "expo-router";
+import ScreenHeader from "@/components/onboarding/ScreenHeader";
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 
 
 type Country = (typeof COUNTRIES)[number];
@@ -24,7 +26,7 @@ const LoginScreen = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [selected, setSelected] = useState<Country>(COUNTRIES[0]);
   const [phoneNumber, setPhoneNumber] = useState<string>("");
-    const router = useRouter();
+  const router = useRouter();
   
 
   const handleSelectCountry = (country: Country) => {
@@ -41,6 +43,7 @@ const LoginScreen = () => {
 
 
   return (
+     <SafeAreaView style={{ flex: 1 }}>
     <KeyboardAvoidingView
       style={{ flex: 1 }}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -53,11 +56,7 @@ const LoginScreen = () => {
       >
         <View style={styles.container}>
           {/* ── Help icon ───*/}
-          <TouchableOpacity style={styles.helpIcon} onPress={() => { }}>
-            <View style={styles.helpCircle}>
-              <QuestionMark style={styles.helpText} />
-            </View>
-          </TouchableOpacity>
+          <ScreenHeader showHelp={true}/>
 
           <View style={{ flex: 1, justifyContent: "center" }}>
             {/* Header Text */}
@@ -102,7 +101,7 @@ const LoginScreen = () => {
                 <FlatList
                   data={COUNTRIES}
                   keyExtractor={(item) => item.name}
-                  showsVerticalScrollIndicator={false}
+                  showsVerticalScrollIndicator={true}
                   keyboardShouldPersistTaps="handled"
                   renderItem={({ item }) => (
                     <TouchableOpacity
@@ -126,6 +125,7 @@ const LoginScreen = () => {
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 };
 
@@ -135,29 +135,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#FFFFFF",
     paddingHorizontal: 20,
-    paddingTop: 10,
-    // justifyContent: "space-around",
-  },
-  // Help icon at the top // still don't get its function
-  helpIcon: {
-    position: "absolute",
-    top: 90,
-    right: 20,
-    zIndex: 10,
-  },
-  helpCircle: {
-    width: 32,
-    height: 32,
-    borderRadius: 14,
-    borderWidth: 1.5,
-    borderColor: "#F8F8F8",
-    backgroundColor: "#F8F8F8",
-    alignItems: "center",
     justifyContent: "center",
-  },
-
-  helpText: {
-    backgroundColor: "transparent",
   },
 
   // Label
@@ -245,7 +223,7 @@ const styles = StyleSheet.create({
 
   // Button
   buttonWrapper: {
-    paddingBottom: 30,
+    paddingBottom: 10,
   },
 });
 
