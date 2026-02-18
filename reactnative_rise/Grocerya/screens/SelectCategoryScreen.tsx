@@ -6,19 +6,7 @@ import HeaderText from '../components/onboarding/HeaderText';
 import PrimaryButton from '../components/onboarding/PrimaryButton';
 import ScreenHeader from '../components/onboarding/ScreenHeader';
 import { useRouter } from 'expo-router';
-
-
-const categories = [
-    "Gluten-Free",
-    "Vegan Friendly",
-    "Raw Meat",
-    "Organic",
-    "Dairy-Free",
-    "Sugar-Free",
-    "Cruelty-Free",
-    "Processed Food",
-    "Show +22 More",
-]
+import { categories } from '@/assets/constants/categories';
 
 const SelectCategoryScreen = () => {
 
