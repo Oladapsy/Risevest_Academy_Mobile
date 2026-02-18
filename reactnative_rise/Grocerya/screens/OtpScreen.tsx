@@ -22,10 +22,10 @@ const OtpScreen = ({ phone }: OtpScreenProps) => {
 
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={styles.safeArea}>
 
       <KeyboardAvoidingView
-        style={{ flex: 1 }}
+        style={styles.safeArea}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
         <View style={styles.container}>
@@ -43,17 +43,16 @@ const OtpScreen = ({ phone }: OtpScreenProps) => {
 
             {/* Phone label */}
             <Text style={styles.label}>{phone}</Text>
+
             <OtpInput
               length={5}
               onComplete={(code) => console.log("OTP:", code)}
             />
-
-
           </View>
 
           <PrimaryButton text="Continue" onPress={handleContinue} />
           <Text style={styles.termText}>By clicking, I accept the
-            <Text style={styles.innerTermText}>Terms and Conditions </Text>
+            <Text style={styles.innerTermText}> Terms and Conditions </Text>
             &
             <Text style={styles.innerTermText}> Privacy Policy</Text></Text>
         </View>
@@ -63,11 +62,13 @@ const OtpScreen = ({ phone }: OtpScreenProps) => {
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     backgroundColor: "#FFFFFF",
     paddingHorizontal: 20,
-    paddingTop: 10,
   },
 
   // Label
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
   termText: {
     fontFamily: "Poppins_500Medium",
     color: "#777777",
-    fontSize: 11.6,
+    fontSize: 11,
   }
   ,
   innerTermText: {
@@ -91,8 +92,8 @@ const styles = StyleSheet.create({
   },
   mainText: {
     flex: 1,
-    justifyContent: "center",
-  }
+    marginTop: 40,
+  },
 })
 
 export default OtpScreen;

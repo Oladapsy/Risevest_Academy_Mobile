@@ -1,4 +1,3 @@
-import HeaderText from '@/components/onboarding/HeaderText'
 import PrimaryButton from '@/components/onboarding/PrimaryButton'
 import ScreenHeader from '@/components/onboarding/ScreenHeader'
 import { useRouter } from 'expo-router';
@@ -7,6 +6,7 @@ import { StyleSheet, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Map from "@/assets/svg/map.svg";
 import SecondaryButton from '@/components/onboarding/SecondaryButton';
+import MapAndNotText from '@/components/onboarding/MapAndNotText';
 
 const LocationScreen = () => {
 
@@ -28,15 +28,18 @@ const LocationScreen = () => {
                     {/* image */}
                     <Map width={200} height={200} style={styles.image} />
                     {/* header */}
-                    <HeaderText
+                    
+                    <MapAndNotText
                         title='Set your location'
                         subtitle='This let us know your location for best shipping experience' />
 
                 </View>
 
                 {/* button */}
+                <View style={{ marginBottom: 10 }}>
                 <PrimaryButton text='Continue' onPress={handleContinue} />
                 <SecondaryButton text='Set Manually' onpress={console.log("Set manually pressed")} />
+                </View>
             </View>
 
 
@@ -49,17 +52,19 @@ const styles = StyleSheet.create({
         flex: 1
     },
     container: {
-        flex: 1,
-        paddingHorizontal: 20,
+         flex: 1,
         backgroundColor: "#FFFFFF",
+        paddingHorizontal: 20,
     },
     mainText: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        marginTop: 40,
+        alignItems: "center",
+        
     },
     image: {
         marginBottom: 20,
+        marginTop: 20,
     }
 
 })

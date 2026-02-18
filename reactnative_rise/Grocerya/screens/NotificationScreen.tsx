@@ -36,8 +36,10 @@ const NotificationScreen = () => {
                 </View>
 
                 {/* button */}
-                <PrimaryButton text='Enable Notifications' onPress={handleContinue} />
-                <SecondaryButton text='Skip For Now' onpress={console.log("Skip for now pressed")} />
+                <View style={{ marginBottom: 10 }}>
+                    <PrimaryButton text='Enable Notifications' onPress={handleContinue} />
+                    <SecondaryButton text='Skip For Now' onpress={console.log("Skip for now pressed")} />
+                </View>
             </View>
 
 
@@ -56,11 +58,13 @@ const styles = StyleSheet.create({
     },
     mainText: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        marginTop: 40,
+        alignItems: "center",
     },
     image: {
-        marginBottom: 20,
+        marginTop: 80,
+        justifyContent: "center",
+        alignItems: "center",
     }
 
 })

@@ -25,13 +25,13 @@ const SelectCategoryScreen = () => {
     const router = useRouter();
 
     const handleContinue = () => {
-  console.log("Next Stage Maps/ Location");
+        console.log("Next Stage Maps/ Location");
 
-  router.push('/location');
-};
+        router.push('/location');
+    };
     return (
-        <SafeAreaView style={{ flex: 1 }}>
-            <View style={styles.conatiner}>
+        <SafeAreaView style={styles.safeArea}>
+            <View style={styles.container}>
                 {/* ── Help and back icon ───*/}
                 <ScreenHeader showHelp={true} showBack={true} />
 
@@ -39,7 +39,7 @@ const SelectCategoryScreen = () => {
                     {/* header */}
                     <HeaderText
                         title='All your grocery need in one place'
-                        subtitle='Select your desired shop category'/>
+                        subtitle='Select your desired shop category' />
 
                     <CategorySelector categories={categories} onselect={console.log} />
                 </View>
@@ -53,14 +53,17 @@ const SelectCategoryScreen = () => {
 
 
 const styles = StyleSheet.create({
-    conatiner: {
+    safeArea: {
+        flex: 1,
+    },
+    container: {
         flex: 1,
         backgroundColor: "#FFFFFF",
         paddingHorizontal: 20,
     },
     mainText: {
         flex: 1,
-        justifyContent: 'center',
+        marginTop: 40,
     }
 })
 export default SelectCategoryScreen
