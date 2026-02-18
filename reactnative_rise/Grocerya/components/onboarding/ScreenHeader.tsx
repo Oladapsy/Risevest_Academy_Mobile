@@ -46,15 +46,11 @@ const ScreenHeader = ({
 
 const styles = StyleSheet.create({
     container: {
-        position: "absolute",
-        top: 40,
-        left: 20,
-        right: 20,
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        zIndex: 100,
         marginHorizontal: 5,
+        marginTop: 30,
     },
     left: {
         width: 40,

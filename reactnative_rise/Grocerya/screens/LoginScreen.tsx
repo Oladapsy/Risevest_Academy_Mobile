@@ -43,9 +43,9 @@ const LoginScreen = () => {
 
 
   return (
-     <SafeAreaView style={{ flex: 1 }}>
+     <SafeAreaView style={styles.safeArea}>
     <KeyboardAvoidingView
-      style={{ flex: 1 }}
+      style={styles.safeArea}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <TouchableWithoutFeedback
@@ -58,7 +58,7 @@ const LoginScreen = () => {
           {/* ── Help icon ───*/}
           <ScreenHeader showHelp={true}/>
 
-          <View style={{ flex: 1, justifyContent: "center" }}>
+          <View style={styles.mainText}>
             {/* Header Text */}
             <HeaderText
               title="Get started"
@@ -131,11 +131,19 @@ const LoginScreen = () => {
 
 // Styling
 const styles = StyleSheet.create({
+  safeArea:{
+    flex: 1,
+  },
   container: {
     flex: 1,
     backgroundColor: "#FFFFFF",
     paddingHorizontal: 20,
-    justifyContent: "center",
+  },
+
+  //main text
+  mainText: {
+    flex: 1,
+    marginTop: 40,
   },
 
   // Label
