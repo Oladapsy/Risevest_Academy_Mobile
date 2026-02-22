@@ -1,4 +1,4 @@
-import OnboardingScreen from "../components/onboarding/OnboardingScreen";
+import OnboardingScreen from "../screens/OnboardingScreen";
 
 const index = () => {
   return (

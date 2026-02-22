@@ -1,4 +1,3 @@
-import React, { useRef, useState } from "react";
 import {
   Dimensions,
   FlatList,
@@ -8,47 +7,23 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import React, { useRef, useState } from "react";
+import { useRouter } from "expo-router";
+import { slides } from "@/assets/constants/slides";
 
 const { width } = Dimensions.get("window");
 
-const slides = [
-  {
-    id: "1",
-    title: "Welcome to Grocerya",
-    image: require("../../assets/images/onboarding/Full_Trolley.png"),
-    subtitle:
-      "Get your grocery needs at your service within a minute. fast, efficient, and convenient.",
-  },
-  {
-    id: "2",
-    title: "Get any packages delivered",
-    image: require("../../assets/images/onboarding/Delivery_Truck.png"),
-    subtitle:
-      "Get all your items conveniently, ensuring everything you need arrive without any hassle.",
-  },
-  {
-    id: "3",
-    title: "Protected package delivery",
-    image: require("../../assets/images/onboarding/Big_Box.png"),
-    subtitle:
-      "Your groceries are carefully packed to ensure they arrive safely and in perfect condition.",
-  },
-  {
-    id: "4",
-    title: "Best price guaranteed",
-    image: require("../../assets/images/onboarding/Cash_Register.png"),
-    subtitle:
-      "Allowing you to stock up on your favorite items while staying within your budget.",
-  },
-];
 
 const OnboardingScreen = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const flatListRef = useRef<FlatList>(null);
+  const router = useRouter();
 
   const handleNext = () => {
     if (currentIndex < slides.length - 1) {
       flatListRef.current?.scrollToIndex({ index: currentIndex + 1 });
+    } else {
+      router.push("/login")
     }
   };
 
