@@ -27,7 +27,7 @@ const LoginScreen = () => {
   const [selected, setSelected] = useState<Country>(COUNTRIES[0]);
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const router = useRouter();
-  
+
 
   const handleSelectCountry = (country: Country) => {
     setSelected(country);
@@ -35,104 +35,105 @@ const LoginScreen = () => {
   };
 
   const handleContinue = () => {
-  const fullNumber = `${selected.code}${phoneNumber}`;
-  console.log("Sending OTP to:", fullNumber);
+    const fullNumber = `${selected.code}${phoneNumber}`;
+    console.log("Sending OTP to:", fullNumber);
 
-  router.push(`/Otp?phone=${encodeURIComponent(fullNumber)}`);
-};
+    router.push(`/Otp?phone=${encodeURIComponent(fullNumber)}`);
+  };
 
 
   return (
-     <SafeAreaView style={styles.safeArea}>
-    <KeyboardAvoidingView
-      style={styles.safeArea}
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-    >
-      <TouchableWithoutFeedback
-        onPress={() => {
-          Keyboard.dismiss();
-          setShowDropdown(false); //close dropdown when tapping outside
-        }}
+    <SafeAreaView style={styles.safeArea}>
+      <KeyboardAvoidingView
+        style={styles.safeArea}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
-        <View style={styles.container}>
-          {/* ── Help icon ───*/}
-          <ScreenHeader showHelp={true}/>
+        <TouchableWithoutFeedback
+          onPress={() => {
+            Keyboard.dismiss();
+            setShowDropdown(false); //close dropdown when tapping outside
+          }}
+        >
+          <View style={styles.container}>
+            {/* ── Help icon ───*/}
+            <ScreenHeader showHelp={true} />
 
-          <View style={styles.mainText}>
-            {/* Header Text */}
-            <HeaderText
-              title="Get started"
-              subtitle="You can log in or make an account if you're new"
-            />
-
-            {/* Phone label */}
-            <Text style={styles.label}>Enter your phone number</Text>
-
-            {/* Phone row */}
-            <View style={styles.phoneRow}>
-              {/* Country picker trigger */}
-              <TouchableOpacity
-                style={styles.countryTrigger}
-                onPress={() => {
-                  Keyboard.dismiss();
-                  setShowDropdown((prev) => !prev);
-                }}
-                activeOpacity={0.75}
-              >
-                <Text style={styles.flagText}>{selected.flag}</Text>
-                <Text style={styles.codeText}>{selected.code}</Text>
-              </TouchableOpacity>
-
-              {/* Phone number input */}
-              <InputField
-                placeholder="Phone Number"
-                keyboardType="phone-pad"
-                value={phoneNumber} 
-                onChangeText={setPhoneNumber}
+            <View style={styles.mainText}>
+              {/* Header Text */}
+              <HeaderText
+                title="Get started"
+                subtitle="You can log in or make an account if you're new"
               />
-            </View>
 
-            {/* ── Inline dropdown list */}
-            {showDropdown && (
-              <View style={styles.dropdown}>
-                {/* vertical scrollbar track indicator */}
-                <View style={styles.scrollTrack} />
+              {/* Phone label */}
+              <Text style={styles.label}>Enter your phone number</Text>
 
-                <FlatList
-                  data={COUNTRIES}
-                  keyExtractor={(item) => item.name}
-                  showsVerticalScrollIndicator={true}
-                  keyboardShouldPersistTaps="handled"
-                  renderItem={({ item }) => (
-                    <TouchableOpacity
-                      style={styles.dropdownItem}
-                      onPress={() => handleSelectCountry(item)}
-                      activeOpacity={0.65}
-                    >
-                      <Text style={styles.itemFlag}>{item.flag}</Text>
-                      <Text style={styles.itemName}>{item.name}</Text>
-                    </TouchableOpacity>
-                  )}
+              {/* Phone row */}
+              <View style={styles.phoneRow}>
+                {/* Country picker trigger */}
+                <TouchableOpacity
+                  style={styles.countryTrigger}
+                  onPress={() => {
+                    Keyboard.dismiss();
+                    setShowDropdown((prev) => !prev);
+                  }}
+                  activeOpacity={0.75}
+                >
+                  <Text style={styles.flagText}>{selected.flag}</Text>
+                  <Text style={styles.codeText}>{selected.code}</Text>
+                </TouchableOpacity>
+
+                {/* Phone number input */}
+                <InputField
+                  placeholder="Phone Number"
+                  keyboardType="phone-pad"
+                  value={phoneNumber}
+                  onChangeText={setPhoneNumber}
                 />
               </View>
-            )}
-          </View>
 
-          {/* ── Continue button*/}
-          <View style={styles.buttonWrapper}>
-            <PrimaryButton text="Continue" onPress={handleContinue} />
+              {/* ── Inline dropdown list */}
+              {showDropdown && (
+                <View style={styles.dropdown}>
+                  {/* vertical scrollbar track indicator */}
+                  <View style={styles.scrollTrack} />
+
+                  <FlatList
+                    data={COUNTRIES}
+                    keyExtractor={(item) => item.name}
+                    showsVerticalScrollIndicator={true}
+                    keyboardShouldPersistTaps="handled"
+                    renderItem={({ item }) => (
+                      <TouchableOpacity
+                        style={styles.dropdownItem}
+                        onPress={() => handleSelectCountry(item)}
+                        activeOpacity={0.65}
+                      >
+                        <Text style={styles.itemFlag}>{item.flag}</Text>
+                        <Text style={styles.itemName}>{item.name}</Text>
+                      </TouchableOpacity>
+                    )}
+                  />
+                </View>
+              )}
+            </View>
+
+            {/* ── Continue button*/}
+            <View style={styles.buttonWrapper}>
+              <PrimaryButton text="Continue" onPress={handleContinue} />
+            </View>
           </View>
-        </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
 
 // Styling
 const styles = StyleSheet.create({
-  safeArea:{
+  safeArea: {
     flex: 1,
+    backgroundColor: "#FFFFFF",
   },
   container: {
     flex: 1,
